@@ -10,6 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SimpleConstraintLayout">
         <activity
+            android:name=".DaftarActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ActivityKedua"
+            android:label="@string/label2"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
