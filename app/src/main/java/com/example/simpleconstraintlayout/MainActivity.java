@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Deklarasi variabel untuk menyimpan email dan password
     String nama, password;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +61,36 @@ public class MainActivity extends AppCompatActivity {
                     Toast t = Toast.makeText(getApplicationContext(),
                             "Email dan Password wajib di isi!!!",
                             Toast.LENGTH_LONG);
+                    edemail.setError("Email tidak boleh kosong!");
+                    edpassword.setError("Password tidak boleh kosong!");
+
                     //Menampilkan Toast
                     t.show();
+                }else if (!nama.equals(email) && password.equals(pass)) {
 
-                } else {
+                        Toast t = Toast.makeText(getApplicationContext(),
+                                "Email salah",
+                                Toast.LENGTH_LONG);
+                        //Menampilkan Toast
+                        t.show();
+
+                    } else if (nama.equals(email) && !password.equals(pass)) {
+
+                        Toast t = Toast.makeText(getApplicationContext(),
+                                "Password salah",
+                                Toast.LENGTH_LONG);
+                        //Menampilkan Toast
+                        t.show();
+
+                    } else if (!nama.equals(email) && !password.equals(pass)) {
+
+                        Toast t = Toast.makeText(getApplicationContext(),
+                                "Email dan Password salah",
+                                Toast.LENGTH_LONG);
+                        //Menampilkan Toast
+                        t.show();
+
+                    } else {
                     //Mengecek apakah isi dari email dan password anda sudah sama dengan email dan
                     // password yang sudah di set
                     if (nama.equals(email) && password.equals(pass)) {
@@ -85,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
                         // dimasukkan kedalam bundle
                         b.putString("b", password.trim());
 
-                        //Membuat objek intent berpindah activity dari main activity ke activityHasil
-                        Intent i = new Intent(getApplicationContext(), ActivityHasil.class);
+                        //Membuat objek intent berpindah activity dari main activity ke Home_Activity
+                        Intent i = new Intent(getApplicationContext(), Home_Activity.class);
 
                         //Memasukkan bundle kedalam intent untuk dikirimkan ke ActivityHasil
                         i.putExtras(b);
@@ -125,5 +153,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
+
     }
 }
